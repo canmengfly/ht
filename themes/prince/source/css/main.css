@@ -1394,11 +1394,12 @@ h1.prince-log a {
   flex: 1;
   font-size: 13px;
   color: #333;
-  letter-spacing: 106px;
+  letter-spacing: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+  padding-right: 20px;
 }
 
 .bookmark-item-time {
