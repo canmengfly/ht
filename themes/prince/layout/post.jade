@@ -1,0 +1,11 @@
+extends _partial/layout.jade
+
+block container
+  include mixins/post
+  +post(page)
+
+block pagination
+  include mixins/paginator
+  +post()
+  
+ 

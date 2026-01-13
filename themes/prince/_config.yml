@@ -1,0 +1,27 @@
+#header
+name: 厚土。
+description: 我回来时，故乡正一寸寸沉入寂静。晋南这方山坳里的小镇，像被遗忘在黄土褶皱里的一粒陈年麦种，人烟日渐稀薄，只余下些老人，守着老屋与往事，如同守着余温未散的灶膛。
+favicon: /fav.png
+ga: ''
+
+#nav
+nav:
+    # 首頁: /
+    # 歸卷: /archives/
+    關於: https://canmeng.net/about/
+    # 其他: /gallery/
+
+#post
+excerpt_link: 
+
+
+#about me
+aboutMeImg: /about_me.jpg
+
+# github: https://github.com/yiliashaw
+# twitter: https://twitter.com/YiliaShaw
+# weibo: http://weibo.com/kathleenxiao
+
+#copyright
+themeLink: https://canmeng.net
+

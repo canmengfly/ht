@@ -1,0 +1,68 @@
+extends _partial/layout.jade
+
+block container
+  //- 封面
+  .book-cover
+    //- h1.cover-title= config.title
+    p.cover-subtitle= theme.description
+    p.cover-author= config.author
+
+  //- 目录 - 按 tag 分卷
+  .book-toc
+    .toc-header
+      h2.toc-title 目 錄
+
+    //- 获取所有文章并按日期排序
+    - var allPosts = site.posts.sort('date', 'asc')
+    
+    //- 获取所有 tags
+    - var tagMap = {}
+    - var noTagPosts = []
+    - allPosts.each(function(post) {
+    -   if (post.tags && post.tags.length > 0) {
+    -     post.tags.each(function(tag) {
+    -       if (!tagMap[tag.name]) tagMap[tag.name] = []
+    -       tagMap[tag.name].push(post)
+    -     })
+    -   } else {
+    -     noTagPosts.push(post)
+    -   }
+    - })
+    
+    - var volumeIndex = 1
+    - var pageIndex = 1
+    
+    //- 按卷展示
+    each posts, tagName in tagMap
+      .toc-volume
+        h3.volume-title
+          span.volume-num 卷#{volumeIndex < 10 ? '〇' + volumeIndex : volumeIndex}
+          span.volume-name= tagName
+        ul.toc-list
+          each post in posts
+            li.toc-item
+              span.toc-num= pageIndex < 10 ? '0' + pageIndex : pageIndex
+              a.toc-link(href=url_for(post.path))
+                span.toc-link-title= post.title
+                span.toc-dots
+                span.toc-page= pageIndex < 10 ? '0' + pageIndex : pageIndex
+            - pageIndex++
+        - volumeIndex++
+    
+    //- 无标签的文章
+    if noTagPosts.length > 0
+      .toc-volume
+        h3.volume-title
+          span.volume-num 卷#{volumeIndex < 10 ? '〇' + volumeIndex : volumeIndex}
+          span.volume-name 雜記
+        ul.toc-list
+          each post in noTagPosts
+            li.toc-item
+              span.toc-num= pageIndex < 10 ? '0' + pageIndex : pageIndex
+              a.toc-link(href=url_for(post.path))
+                span.toc-link-title= post.title
+                span.toc-dots
+                span.toc-page= pageIndex < 10 ? '0' + pageIndex : pageIndex
+            - pageIndex++
+
+block pagination
