@@ -4,6 +4,9 @@ description: 我回来时，故乡正一寸寸沉入寂静。晋南这方山坳�
 favicon: /fav.png
 ga: ''
 
+# 书籍封面图片（可选，留空则显示文字封面）
+cover_image: /cover.jpg
+
 #nav
 nav:
     # 首頁: /

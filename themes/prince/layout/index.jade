@@ -1,11 +1,27 @@
 extends _partial/layout.jade
 
 block container
-  //- 封面
-  .book-cover
-    //- h1.cover-title= config.title
-    p.cover-subtitle= theme.description
-    p.cover-author= config.author
+  //- 3D 书籍封面
+  .book-cover-section
+    .book-3d-wrapper
+      .book-3d
+        .book-3d-inner
+          .book-spine
+            span.spine-title= config.title
+            span.spine-author= config.author
+          .book-front
+            //- 封面图片，可在主题配置中设置 cover_image
+            if theme.cover_image
+              img.book-cover-image(src=url_for(theme.cover_image) alt=config.title)
+            else
+              .book-front-content
+                h1.book-title= config.title
+                p.book-author= config.author
+          .book-pages
+    //- 封面下方描述
+    .book-description
+      p.book-desc-text= theme.description
+      p.book-desc-author= config.author
 
   //- 目录 - 按 tag 分卷
   .book-toc
